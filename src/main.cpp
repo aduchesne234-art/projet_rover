@@ -1,3 +1,21 @@
+// main.cpp - Triangular rover: AUTOMATIC + MANUAL mode + live camera
+// ESP32-S3 WROOM devkit, Arduino framework (PlatformIO)
+//
+// Phone: connect to the Wi-Fi network "Rover", then open http://192.168.4.1
+
+#include <Arduino.h>
+#include <WiFi.h>
+#include "config.h"
+#include "rover.h"
+#include "camera_web.h"
+
+Rover rover;
+
+void setup() {
+  Serial.begin(115200);
+  delay(300);
+  randomSeed(esp_random());
+
 // 1) Motors off first, then sensors + gyro calibration (keep the rover still)
   rover.begin();
 
